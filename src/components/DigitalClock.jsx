@@ -1,35 +1,42 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
 function DigitalClock() {
-
-
     const [time, setTime] = useState(new Date());
+    const [isMilitary, setIsMilitary] = useState(false);
 
-    // only run once on mount
+    // Update time every second
     useEffect(() => {
         const interval = setInterval(() => {
-            setTime(new Date())
-        }, 1000)
-        setTime(new Date())
+            setTime(new Date());
+        }, 1000);
 
-        //clean up
-        return () => clearInterval(interval)
-    }, [])
+        // Cleanup interval on component unmount
+        return () => clearInterval(interval);
+    }, []);
 
-    const getTime = (time) => {
-        const pmAm = time.getHours() >= 12 ? 'PM' : 'AM'
-        return `${time.getHours()}:${time.getMinutes()}:${time.getSeconds()} ${pmAm}`
-    }
+    const toggleTimeFormat = () => {
+        setIsMilitary((prev) => !prev);
+    };
 
+    const formatTime = (time) => {
+        const hours = isMilitary ? time.getHours() : time.getHours() % 12 || 12;
+        const minutes = time.getMinutes().toString().padStart(2, '0');
+        const seconds = time.getSeconds().toString().padStart(2, '0');
+        const amPm = isMilitary ? '' : time.getHours() >= 12 ? 'PM' : 'AM';
+
+        return `${hours}:${minutes}:${seconds} ${amPm}`;
+    };
 
     return (
         <div className="clock-container">
             <div className="clock">
-                <span>{getTime(time)}</span> 
-                
+                <span>{formatTime(time)}</span>
             </div>
+            <button className="toggle-button" onClick={toggleTimeFormat}>
+                {isMilitary ? 'Switch to 12 Hour' : 'Switch to Military Time'}
+            </button>
         </div>
-    )
+    );
 }
 
 export default DigitalClock;

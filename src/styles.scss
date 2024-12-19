@@ -1,0 +1,61 @@
+/**
+  thanks to https://unsplash.com/@marekpiwnicki
+  for the amazing image
+**/
+
+
+html{
+
+    min-width: 600px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./assets/bg-img.avif');
+    background-size: cover; /* Ensures the background image covers the entire page */
+    background-position: center; /* Keeps the image centered */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100%; /* Ensures it spans the full width */
+    overflow: hidden;
+  }
+  
+  .clock-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
+    border-radius: 10px;
+    width: fit-content;
+  }
+  
+  .clock {
+    font-size: 5rem;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    color: #fff; /* Text contrast for readability */
+    text-align: center;
+  }
+  
+  .toggle-button {
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem; /* Add spacing between the clock and buttons */
+  }
+  
+  .toggle-button:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Subtle hover effect */
+  }
+  
