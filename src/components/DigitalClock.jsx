@@ -2,8 +2,11 @@ import { useState, useEffect } from 'react'
 
 function DigitalClock() {
     return (
-        <div>
-            <h1> Digital Clock</h1>
+        <div className="clock-container">
+            <div className="clock">
+                <span>0:00:00</span> 
+                
+            </div>
         </div>
     )
 }
